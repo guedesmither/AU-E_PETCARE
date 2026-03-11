@@ -59,12 +59,52 @@
             transition: opacity 2s ease-in-out;
         }
         
+        .hero-video-desktop {
+            display: block;
+        }
+        
+        .hero-video-mobile {
+            display: none;
+        }
+        
         @media (min-width: 641px) {
             .hero-video {
                 width: 100vw;
                 height: 100vh;
                 object-fit: cover;
                 object-position: center;
+            }
+            
+            .hero-video-desktop {
+                display: block;
+            }
+            
+            .hero-video-mobile {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-video {
+                display: block;
+                width: 100vw;
+                height: 100vh;
+                object-fit: contain;
+                object-position: center;
+                transform: none;
+            }
+            
+            .hero-video-desktop {
+                display: none;
+            }
+            
+            .hero-video-mobile {
+                display: block;
+                width: 100vw;
+                height: 100vh;
+                object-fit: contain;
+                object-position: center;
+                transform: none;
             }
         }
         
@@ -215,36 +255,17 @@
         
         .confetti:nth-child(1) { background: #FF6B6B; top: 20%; left: 10%; animation: float 3s infinite; }
         .confetti:nth-child(2) { background: #4ECDC4; top: 70%; left: 80%; animation: float 4s infinite; }
-        .confetti:nth-child(3) { background: #45B7D1; top: 30%; left: 70%; animation: float 3.5s infinite; }
-        .confetti:nth-child(4) { background: #96CEB4; top: 80%; left: 20%; animation: float 4.5s infinite; }
-        .confetti:nth-child(5) { background: #FFEAA7; top: 15%; left: 85%; animation: float 3.2s infinite; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        @keyframes slide-down {
-            from { 
-                opacity: 0;
-                transform: translateY(-10px);
+            
+            .hero-video-desktop {
+                display: block;
             }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
+            
+            .hero-video-mobile {
+                display: none;
             }
-        }
-        
-        .animate-slide-down {
-            animation: slide-down 0.3s ease-out;
         }
         
         @media (max-width: 640px) {
-            .hero-gradient {
-                min-height: 100vh;
-                padding-top: 4rem;
-            }
-            
             .hero-video {
                 display: block;
                 width: 100vw;
@@ -254,17 +275,17 @@
                 transform: none;
             }
             
-            .btn-primary, .btn-secondary {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.875rem;
+            .hero-video-desktop {
+                display: none;
             }
             
-            .card-hover {
-                padding: 1.5rem;
-            }
-            
-            .section-background {
-                padding: 3rem 0;
+            .hero-video-mobile {
+                display: block;
+                width: 100vw;
+                height: 100vh;
+                object-fit: contain;
+                object-position: center;
+                transform: none;
             }
         }
         
@@ -410,9 +431,15 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-gradient min-h-screen flex items-center pt-16">
-        <!-- Vídeo de fundo -->
-        <video class="hero-video" autoplay muted loop playsinline>
+        <!-- Vídeo de fundo para PC -->
+        <video class="hero-video hero-video-desktop" autoplay muted loop playsinline>
             <source src="videos/hero-bg.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        
+        <!-- Vídeo de fundo para Celular -->
+        <video class="hero-video hero-video-mobile" autoplay muted loop playsinline>
+            <source src="videos/hero-bg-mobile.mp4" type="video/mp4">
             Seu navegador não suporta vídeos HTML5.
         </video>
         
