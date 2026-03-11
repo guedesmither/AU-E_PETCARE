@@ -669,6 +669,7 @@
                     -webkit-user-select: none;
                     scroll-snap-type: x mandatory;
                     scroll-behavior: smooth;
+                    transition: transform 0.3s ease;
                 }
                 
                 .animate-scroll:hover {
@@ -678,12 +679,18 @@
                 .animate-scroll.dragging {
                     animation-play-state: paused;
                     cursor: grabbing;
-                    scroll-snap-type: none;
+                    transition: none;
+                }
+                
+                .animate-scroll.swiping {
+                    animation-play-state: paused;
+                    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 }
                 
                 .carousel-slide {
                     scroll-snap-align: start;
                     flex-shrink: 0;
+                    transition: transform 0.3s ease;
                 }
                 
                 /* Mobile touch optimization */
@@ -692,6 +699,7 @@
                         overflow-x: auto;
                         scrollbar-width: none;
                         -ms-overflow-style: none;
+                        animation: none; /* Desativa animação no mobile */
                     }
                     
                     .animate-scroll::-webkit-scrollbar {
@@ -2324,63 +2332,106 @@
             const carousel = document.getElementById('carousel');
             if (!carousel) return;
             
-            let isDown = false;
             let startX;
+            let currentX;
             let scrollLeft;
-            let scrollTimeout;
+            let isSwiping = false;
+            let isAnimating = false;
             
-            // Mouse events
-            carousel.addEventListener('mousedown', (e) => {
-                if (window.innerWidth > 768) return; // Apenas em mobile/tablet
-                isDown = true;
-                carousel.classList.add('dragging');
-                startX = e.pageX - carousel.offsetLeft;
-                scrollLeft = carousel.scrollLeft;
-                e.preventDefault();
-            });
+            // Detecta se é mobile
+            const isMobile = window.innerWidth <= 768;
             
-            carousel.addEventListener('mouseleave', () => {
-                isDown = false;
-                carousel.classList.remove('dragging');
-            });
+            if (!isMobile) {
+                // Desktop: mantém animação infinita
+                return;
+            }
             
-            carousel.addEventListener('mouseup', () => {
-                isDown = false;
-                carousel.classList.remove('dragging');
-            });
-            
-            carousel.addEventListener('mousemove', (e) => {
-                if (!isDown || window.innerWidth > 768) return;
-                e.preventDefault();
-                const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
-            });
-            
-            // Touch events para mobile
+            // Mobile: swipe com dedo
             carousel.addEventListener('touchstart', (e) => {
-                if (window.innerWidth > 768) return;
-                carousel.classList.add('dragging');
-                startX = e.touches[0].pageX - carousel.offsetLeft;
+                if (isAnimating) return;
+                startX = e.touches[0].clientX;
                 scrollLeft = carousel.scrollLeft;
-                clearTimeout(scrollTimeout);
+                isSwiping = true;
+                carousel.classList.add('swiping');
                 e.preventDefault();
             }, { passive: false });
-            
-            carousel.addEventListener('touchend', () => {
-                carousel.classList.remove('dragging');
-                scrollTimeout = setTimeout(() => {
-                    carousel.classList.remove('dragging');
-                }, 100);
-            });
             
             carousel.addEventListener('touchmove', (e) => {
-                if (!carousel.classList.contains('dragging') || window.innerWidth > 768) return;
+                if (!isSwiping || isAnimating) return;
                 e.preventDefault();
-                const x = e.touches[0].pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
+                currentX = e.touches[0].clientX;
+                const diff = startX - currentX;
+                
+                // Aplica transformação para swipe
+                carousel.style.transform = `translateX(${-scrollLeft - diff}px)`;
             }, { passive: false });
+            
+            carousel.addEventListener('touchend', (e) => {
+                if (!isSwiping || isAnimating) return;
+                isSwiping = false;
+                carousel.classList.remove('swiping');
+                
+                const diff = startX - currentX;
+                const threshold = 50; // Threshold para ativar swipe
+                
+                if (Math.abs(diff) > threshold) {
+                    // Swipe detectado - move para próxima/anterior
+                    isAnimating = true;
+                    const slideWidth = 140; // Largura do slide + gap
+                    const currentSlide = Math.round(scrollLeft / slideWidth);
+                    const newSlide = diff > 0 ? currentSlide + 1 : currentSlide - 1;
+                    
+                    // Calcula posição final
+                    const maxScroll = carousel.scrollWidth - carousel.offsetWidth;
+                    const targetScroll = Math.max(0, Math.min(newSlide * slideWidth, maxScroll));
+                    
+                    // Anima para nova posição
+                    carousel.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    carousel.style.transform = `translateX(${-targetScroll}px)`;
+                    
+                    // Atualiza scrollLeft
+                    carousel.scrollLeft = targetScroll;
+                    
+                    setTimeout(() => {
+                        isAnimating = false;
+                        carousel.style.transition = '';
+                        carousel.style.transform = '';
+                    }, 300);
+                } else {
+                    // Swipe fraco - volta à posição original
+                    carousel.style.transition = 'transform 0.3s ease';
+                    carousel.style.transform = `translateX(${-scrollLeft}px)`;
+                    
+                    setTimeout(() => {
+                        carousel.style.transition = '';
+                        carousel.style.transform = '';
+                    }, 300);
+                }
+            });
+            
+            // Mantém rolagem infinita duplicando conteúdo
+            maintainInfiniteScroll();
+        }
+        
+        function maintainInfiniteScroll() {
+            const carousel = document.getElementById('carousel');
+            if (!carousel) return;
+            
+            carousel.addEventListener('scroll', () => {
+                const scrollLeft = carousel.scrollLeft;
+                const scrollWidth = carousel.scrollWidth;
+                const clientWidth = carousel.clientWidth;
+                
+                // Se chegou ao fim, volta ao início
+                if (scrollLeft >= (scrollWidth - clientWidth) / 2) {
+                    carousel.scrollLeft = 0;
+                }
+                
+                // Se voltou muito, vai para o fim
+                if (scrollLeft <= 0) {
+                    carousel.scrollLeft = (scrollWidth - clientWidth) / 2;
+                }
+            });
         }
 
         window.addEventListener('load', function() {
