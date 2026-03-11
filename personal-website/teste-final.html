@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Carrossel - Versão Final</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .carousel { 
+            width: 400px; 
+            height: 300px; 
+            margin: 20px auto; 
+            border: 3px solid #007bff; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .carousel img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .carousel img.escondida { display: none; }
+        .carousel img.visivel { display: block; }
+        button { 
+            padding: 15px 25px; 
+            margin: 10px; 
+            font-size: 16px; 
+            cursor: pointer;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover { background: #218838; }
+        .info { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            margin: 10px; 
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .erro { background: #f8d7da; color: #721c24; }
+        .sucesso { background: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+    <h1>🎯 TESTE FINAL DO CARROSSEL</h1>
+    
+    <div class="info">
+        <strong>Status:</strong> <span id="status">Carregando...</span><br>
+        <strong>Foto Atual:</strong> <span id="fotoAtual">1</span> / 6<br>
+        <strong>Última Ação:</strong> <span id="ultimaAcao">Nenhuma</span>
+    </div>
+    
+    <div class="carousel" id="carousel">
+        <img src="images/carousel/foto1.jpg" alt="Foto 1" class="visivel">
+        <img src="images/carousel/foto2.jpg" alt="Foto 2" class="escondida">
+        <img src="images/carousel/foto3.jpg" alt="Foto 3" class="escondida">
+        <img src="images/carousel/foto4.jpg" alt="Foto 4" class="escondida">
+        <img src="images/carousel/foto5.jpg" alt="Foto 5" class="escondida">
+        <img src="images/carousel/foto6.JPG" alt="Foto 6" class="escondida">
+    </div>
+    
+    <div>
+        <button onclick="testeManual()">🔧 Teste Manual</button>
+        <button onclick="mudarFoto(1)">➡️ Próxima</button>
+        <button onclick="mudarFoto(-1)">⬅️ Anterior</button>
+        <button onclick="autoPlay()">🔄 Auto-Play</button>
+    </div>
+    
+    <div id="debug" class="info" style="text-align: left; font-family: monospace; font-size: 12px;">
+        <strong>Debug:</strong><br>
+        <div id="debugContent">Aguardando...</div>
+    </div>
+    
+    <script>
+        // Variáveis globais
+        let indiceAtual = 0;
+        const totalFotos = 6;
+        let autoPlayIntervalo = null;
+        
+        // Função de debug
+        function debug(mensagem) {
+            const debugDiv = document.getElementById('debugContent');
+            const hora = new Date().toLocaleTimeString();
+            debugDiv.innerHTML = hora + ' - ' + mensagem + '<br>' + debugDiv.innerHTML;
+            console.log(mensagem);
+        }
+        
+        // Função para atualizar status
+        function atualizarStatus(mensagem, tipo = 'sucesso') {
+            document.getElementById('status').textContent = mensagem;
+            document.getElementById('ultimaAcao').textContent = mensagem;
+            
+            const statusDiv = document.getElementById('status').parentElement;
+            statusDiv.className = 'info ' + tipo;
+        }
+        
+        // Função principal para mudar foto
+        function mudarFoto(direcao) {
+            try {
+                debug('Mudando foto. Direção: ' + direcao + '. Índice atual: ' + indiceAtual);
+                
+                // Pega todas as imagens
+                const imagens = document.querySelectorAll('#carousel img');
+                debug('Imagens encontradas: ' + imagens.length);
+                
+                if (imagens.length === 0) {
+                    atualizarStatus('ERRO: Nenhuma imagem encontrada!', 'erro');
+                    return;
+                }
+                
+                // Esconde imagem atual
+                imagens[indiceAtual].className = 'escondida';
+                debug('Foto ' + (indiceAtual + 1) + ' escondida');
+                
+                // Calcula novo índice
+                indiceAtual = indiceAtual + direcao;
+                if (indiceAtual >= totalFotos) indiceAtual = 0;
+                if (indiceAtual < 0) indiceAtual = totalFotos - 1;
+                
+                // Mostra nova imagem
+                imagens[indiceAtual].className = 'visivel';
+                debug('Foto ' + (indiceAtual + 1) + ' mostrada');
+                
+                // Atualiza interface
+                document.getElementById('fotoAtual').textContent = indiceAtual + 1;
+                atualizarStatus('Foto ' + (indiceAtual + 1) + ' carregada com sucesso!');
+                
+            } catch (erro) {
+                debug('ERRO: ' + erro.message);
+                atualizarStatus('ERRO: ' + erro.message, 'erro');
+            }
+        }
+        
+        // Função de teste manual
+        function testeManual() {
+            debug('=== INICIANDO TESTE MANUAL ===');
+            
+            const imagens = document.querySelectorAll('#carousel img');
+            debug('Total de imagens no DOM: ' + imagens.length);
+            
+            for (let i = 0; i < imagens.length; i++) {
+                const img = imagens[i];
+                debug('Imagem ' + (i + 1) + ': src=' + img.src + ', classe=' + img.className);
+            }
+            
+            atualizarStatus('Teste manual concluído! Verifique o debug.');
+        }
+        
+        // Função auto-play
+        function autoPlay() {
+            if (autoPlayIntervalo) {
+                clearInterval(autoPlayIntervalo);
+                autoPlayIntervalo = null;
+                atualizarStatus('Auto-play DESLIGADO');
+                debug('Auto-play desligado');
+            } else {
+                autoPlayIntervalo = setInterval(function() {
+                    mudarFoto(1);
+                }, 2000);
+                atualizarStatus('Auto-play LIGADO (2 segundos)');
+                debug('Auto-play ligado');
+            }
+        }
+        
+        // Inicialização
+        window.onload = function() {
+            debug('=== PÁGINA CARREGADA ===');
+            debug('Iniciando carrossel...');
+            
+            const imagens = document.querySelectorAll('#carousel img');
+            debug('Imagens encontradas na inicialização: ' + imagens.length);
+            
+            if (imagens.length > 0) {
+                atualizarStatus('Carrossel pronto! Use os botões.');
+                debug('Carrossel inicializado com sucesso!');
+            } else {
+                atualizarStatus('ERRO: Nenhuma imagem encontrada!', 'erro');
+                debug('ERRO CRÍTICO: Nenhuma imagem encontrada!');
+            }
+        };
+        
+    </script>
+</body>
+</html>

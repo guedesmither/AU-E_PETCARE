@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Teste EmailJS Isolado</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("g7uF0Elsr-_HOn0ck");
+        })();
+    </script>
+</head>
+<body>
+    <h1>🧪 TESTE ISOLADO EMAILJS</h1>
+    
+    <form id="testForm">
+        <input type="text" id="nome" placeholder="Nome" required><br><br>
+        <input type="email" id="email" placeholder="Email" required><br><br>
+        <textarea id="mensagem" placeholder="Mensagem" required></textarea><br><br>
+        <button type="submit">📧 Enviar Teste</button>
+    </form>
+    
+    <div id="resultado"></div>
+    
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // IMPEDIR RELOAD
+            
+            console.log('🔥 FORMULÁRIO SUBMETIDO!');
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const mensagem = document.getElementById('mensagem').value;
+            
+            console.log('📋 Dados:', { nome, email, mensagem });
+            
+            // Verificar EmailJS
+            if (typeof emailjs === 'undefined') {
+                console.error('❌ EmailJS não carregou!');
+                alert('❌ EmailJS não carregou!');
+                return;
+            }
+            
+            console.log('✅ EmailJS carregado, enviando...');
+            
+            emailjs.send("service_1wwk81o", "template_p7wp6qq", {
+                to_email: "aue.petcare@gmail.com",
+                subject: `TESTE - ${nome}`,
+                tutor_name: nome,
+                tutor_email: email,
+                message: mensagem,
+                registration_date: new Date().toLocaleString('pt-BR'),
+                reply_to: email
+            })
+            .then(function(response) {
+                console.log('✅ SUCESSO!', response);
+                document.getElementById('resultado').innerHTML = 
+                    '<div style="background: green; color: white; padding: 20px;">✅ EMAIL ENVIADO COM SUCESSO!</div>';
+            })
+            .catch(function(error) {
+                console.error('❌ ERRO:', error);
+                document.getElementById('resultado').innerHTML = 
+                    '<div style="background: red; color: white; padding: 20px;">❌ ERRO: ' + error.text + '</div>';
+            });
+        });
+    </script>
+</body>
+</html>

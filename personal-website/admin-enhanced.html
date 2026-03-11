@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - AU-Ê Pet Care</title>
+    <meta name="description" content="Painel administrativo da AU-Ê Pet Care - Gerencie cadastros de pets e clientes">
+    <meta name="author" content="AU-Ê Pet Care">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4A90A4; /* Cor do AU-Ê Pet Care */
+            --secondary-color: #6BB6D6;
+            --accent-color: #87CEEB;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color) !important;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .btn-success {
+            background-color: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-info {
+            background-color: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-approved {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-rejected {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .document-preview {
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .document-preview:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-paw text-primary-color text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold text-gray-800">Painel AU-Ê</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Admin</span>
+                    <button onclick="logout()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-blue-100 rounded-full">
+                        <i class="fas fa-dog text-blue-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600">Pets Cadastrados</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="petCount">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-green-100 rounded-full">
+                        <i class="fas fa-check-circle text-green-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600">Aprovados</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="approvedCount">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-yellow-100 rounded-full">
+                        <i class="fas fa-clock text-yellow-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600">Pendentes</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="pendingCount">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-red-100 rounded-full">
+                        <i class="fas fa-times-circle text-red-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600">Rejeitados</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="rejectedCount">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="border-b border-gray-200">
+                <nav class="flex -mb-px">
+                    <button onclick="showTab('pets')" class="tab-btn px-6 py-3 border-b-2 border-primary-color text-primary-color font-medium">
+                        <i class="fas fa-dog mr-2"></i>Cadastros de Pets
+                    </button>
+                    <button onclick="showTab('visits')" class="tab-btn px-6 py-3 border-b-2 border-transparent text-gray-600 font-medium hover:text-gray-800">
+                        <i class="fas fa-calendar mr-2"></i>Visitas Agendadas
+                    </button>
+                    <button onclick="showTab('services')" class="tab-btn px-6 py-3 border-b-2 border-transparent text-gray-600 font-medium hover:text-gray-800">
+                        <i class="fas fa-concierge-bell mr-2"></i>Serviços
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Pets Tab (Complete Info) -->
+            <div id="petsTab" class="tab-content p-6">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tutor</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pet</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Informações</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="petsTableBody">
+                            <!-- Pets will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Visits Tab -->
+            <div id="visitsTab" class="tab-content p-6 hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Horário</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="visitsTableBody">
+                            <!-- Visits will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Services Tab -->
+            <div id="servicesTab" class="tab-content p-6 hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Preço</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="servicesTableBody">
+                            <!-- Services will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Document Modal -->
+    <div id="documentModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Documentos do Pet</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="documentContent">
+                <!-- Documents will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data storage
+        let visits = JSON.parse(localStorage.getItem('visits') || '[]');
+        let pets = JSON.parse(localStorage.getItem('pets') || '[]');
+        let services = JSON.parse(localStorage.getItem('services') || '[]');
+        let documents = JSON.parse(localStorage.getItem('documents') || '{}');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPets();
+            loadVisits();
+            loadServices();
+            updateStats();
+        });
+
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Remove active state from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-primary-color', 'text-primary-color');
+                btn.classList.add('border-transparent', 'text-gray-600');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.remove('hidden');
+            
+            // Add active state to clicked button
+            event.target.classList.remove('border-transparent', 'text-gray-600');
+            event.target.classList.add('border-primary-color', 'text-primary-color');
+        }
+
+        // Update data from localStorage
+        function refreshData() {
+            visits = JSON.parse(localStorage.getItem('visits') || '[]');
+            pets = JSON.parse(localStorage.getItem('pets') || '[]');
+            services = JSON.parse(localStorage.getItem('services') || '[]');
+            documents = JSON.parse(localStorage.getItem('documents') || '{}');
+            
+            loadPets();
+            loadVisits();
+            loadServices();
+            updateStats();
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('petCount').textContent = pets.length;
+            document.getElementById('approvedCount').textContent = pets.filter(p => p.status === 'approved').length;
+            document.getElementById('pendingCount').textContent = pets.filter(p => p.status === 'pending').length;
+            document.getElementById('rejectedCount').textContent = pets.filter(p => p.status === 'rejected').length;
+        }
+
+        // Get status badge HTML
+        function getStatusBadge(status) {
+            const badges = {
+                'pending': '<span class="status-badge status-pending">Pendente</span>',
+                'approved': '<span class="status-badge status-approved">Aprovado</span>',
+                'rejected': '<span class="status-badge status-rejected">Rejeitado</span>'
+            };
+            return badges[status] || '<span class="status-badge status-pending">Desconhecido</span>';
+        }
+
+        // Get status text
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'Pendente',
+                'approved': 'Aprovado',
+                'rejected': 'Rejeitado'
+            };
+            return statusMap[status] || status;
+        }
+
+        // Load Pets (Complete Info)
+        function loadPets() {
+            const tbody = document.getElementById('petsTableBody');
+            tbody.innerHTML = '';
+            
+            pets.forEach((pet, index) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                
+                const statusBadge = getStatusBadge(pet.status);
+                const registrationDate = new Date(pet.registrationDate).toLocaleDateString('pt-BR');
+                
+                // Format gender and neutered
+                const genderText = pet.gender === 'macho' ? 'Macho' : 'Fêmea';
+                const neuteredText = pet.isNeutered === 'sim' ? 'Sim' : 'Não';
+                const temperamentText = {
+                    'muita-energia': '🔥 Muita energia',
+                    'media-energia': '⚡ Média energia', 
+                    'baixa-energia': '😌 Baixa energia'
+                }[pet.temperament] || pet.temperament;
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${pet.tutorName}</div>
+                        <div class="text-sm text-gray-500">${pet.tutorPhone}</div>
+                        <div class="text-sm text-gray-500">${pet.tutorEmail}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${pet.petName}</div>
+                        <div class="text-sm text-gray-500">${pet.petAge}</div>
+                        <div class="text-sm text-gray-500">${pet.breed}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">
+                            <div><strong>Sexo:</strong> ${genderText}</div>
+                            <div><strong>Castrado:</strong> ${neuteredText}</div>
+                            <div><strong>Temperamento:</strong><br>${temperamentText}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${pet.service}</div>
+                        <div class="text-sm text-gray-500">${registrationDate}</div>
+                        <div class="text-xs text-gray-400">ID: ${pet.id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${statusBadge}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="viewPetDetails(${index})" class="text-blue-600 hover:text-blue-900 mr-3">
+                            <i class="fas fa-eye"></i> Ver
+                        </button>
+                        <button onclick="approvePet(${index})" class="text-green-600 hover:text-green-900 mr-3">
+                            <i class="fas fa-check"></i> Aprovar
+                        </button>
+                        <button onclick="rejectPet(${index})" class="text-red-600 hover:text-red-900">
+                            <i class="fas fa-times"></i> Rejeitar
+                        </button>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load Visits
+        function loadVisits() {
+            const tbody = document.getElementById('visitsTableBody');
+            tbody.innerHTML = '';
+            
+            visits.forEach((visit, index) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                
+                const statusBadge = getStatusBadge(visit.status || 'pending');
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${visit.name}</div>
+                        <div class="text-sm text-gray-500">${visit.email}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${visit.phone}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${visit.date}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${visit.time || 'Manhã'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${statusBadge}
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load Services
+        function loadServices() {
+            const tbody = document.getElementById('servicesTableBody');
+            tbody.innerHTML = '';
+            
+            const defaultServices = [
+                { name: 'Creche', description: 'Cuidado diário para pets', price: 'R$ 50/dia', status: 'active' },
+                { name: 'Hotel', description: 'Hospedagem para pets', price: 'R$ 80/noite', status: 'active' },
+                { name: 'Banho & Tosa', description: 'Serviços de higiene', price: 'Em breve', status: 'coming-soon' },
+                { name: 'Acompanhamento Veterinário', description: 'Suporte médico', price: 'Em breve', status: 'coming-soon' },
+                { name: 'Transporte', description: 'Transporte seguro', price: 'R$ 30/viagem', status: 'active' }
+            ];
+            
+            defaultServices.forEach((service, index) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                
+                const statusBadge = service.status === 'active' 
+                    ? '<span class="status-badge status-approved">Ativo</span>'
+                    : '<span class="status-badge status-pending">Em breve</span>';
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${service.name}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${service.description}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${service.price}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${statusBadge}
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // View Pet Details
+        function viewPetDetails(index) {
+            const pet = pets[index];
+            
+            // Get documents from localStorage
+            const petDocuments = documents[pet.id] || {};
+            
+            const content = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-lg mb-4">Informações do Tutor</h4>
+                        <div class="space-y-2">
+                            <p><strong>Nome:</strong> ${pet.tutorName}</p>
+                            <p><strong>Telefone:</strong> ${pet.tutorPhone}</p>
+                            <p><strong>Email:</strong> ${pet.tutorEmail}</p>
+                            <p><strong>CPF:</strong> ${pet.tutorCpf}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg mb-4">Informações do Pet</h4>
+                        <div class="space-y-2">
+                            <p><strong>Nome:</strong> ${pet.petName}</p>
+                            <p><strong>Idade:</strong> ${pet.petAge}</p>
+                            <p><strong>Raça:</strong> ${pet.breed}</p>
+                            <p><strong>Serviço:</strong> ${pet.service}</p>
+                            <p><strong>Sexo:</strong> ${pet.gender === 'macho' ? 'Macho' : 'Fêmea'}</p>
+                            <p><strong>Castrado:</strong> ${pet.isNeutered === 'sim' ? 'Sim' : 'Não'}</p>
+                            <p><strong>Temperamento:</strong> ${pet.temperament}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <h4 class="font-semibold text-lg mb-4">Status do Cadastro</h4>
+                    <div class="space-y-2">
+                        <p><strong>Status:</strong> ${getStatusBadge(pet.status)}</p>
+                        <p><strong>Data de Cadastro:</strong> ${new Date(pet.registrationDate).toLocaleString('pt-BR')}</p>
+                        <p><strong>ID:</strong> ${pet.id}</p>
+                        <p><strong>Documentos Enviados:</strong> ${pet.documentsSent ? 'Sim' : 'Não'}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('documentContent').innerHTML = content;
+            document.getElementById('documentModal').style.display = 'block';
+        }
+
+        // Approve Pet
+        function approvePet(index) {
+            const pet = pets[index];
+            pet.status = 'approved';
+            localStorage.setItem('pets', JSON.stringify(pets));
+            loadPets();
+            updateStats();
+            
+            // Send notification (in real app, this would send an email/SMS)
+            alert(`Cadastro de ${pet.petName} aprovado com sucesso!`);
+        }
+
+        // Reject Pet
+        function rejectPet(index) {
+            const pet = pets[index];
+            if (confirm(`Tem certeza que deseja rejeitar o cadastro de ${pet.petName}?`)) {
+                pet.status = 'rejected';
+                localStorage.setItem('pets', JSON.stringify(pets));
+                loadPets();
+                updateStats();
+                
+                // Send notification (in real app, this would send an email/SMS)
+                alert(`Cadastro de ${pet.petName} rejeitado.`);
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('documentModal').style.display = 'none';
+        }
+
+        // Logout
+        function logout() {
+            if (confirm('Tem certeza que deseja sair do painel administrativo?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('documentModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Auto-refresh every 30 seconds
+        setInterval(refreshData, 30000);
+    </script>
+</body>
+</html>

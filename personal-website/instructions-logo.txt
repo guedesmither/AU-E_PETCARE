@@ -1,0 +1,21 @@
+COMO ADICIONAR SEU LOGO AU-Ê AO SITE:
+
+MÉTODO 1 - COPIAR E COLAR (Mais fácil):
+1. Clique com o botão direito na imagem do logo que você enviou
+2. Selecione "Copiar imagem"
+3. Vá para a pasta: c:/Users/guede/CascadeProjects/personal-website/images/
+4. Clique com o botão direito em "logo-au-e.png" existente
+5. Selecione "Colar" e confirme a substituição
+
+MÉTODO 2 - SALVAR COMO:
+1. Clique com o botão direito na imagem do logo
+2. Selecione "Salvar imagem como..."
+3. Navegue até: c:/Users/guede/CascadeProjects/personal-website/images/
+4. Salve como "logo-au-e.png" (substituindo o arquivo existente)
+
+MÉTODO 3 - ARRASTAR:
+1. Abra a pasta: c:/Users/guede/CascadeProjects/personal-website/images/
+2. Arraste a imagem do logo diretamente para a pasta
+3. Confirme a substituição do arquivo "logo-au-e.png"
+
+Após fazer isso, atualize a página do site (pressione F5) e seu logo AU-ê aparecerá!

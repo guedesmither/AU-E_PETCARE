@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Carrossel</title>
+    <style>
+        .carousel { 
+            width: 400px; 
+            height: 300px; 
+            position: relative; 
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            overflow: hidden;
+        }
+        .carousel img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: none;
+        }
+        .carousel img:first-child { 
+            display: block; 
+        }
+        .buttons { 
+            text-align: center; 
+            margin: 20px; 
+        }
+        button { 
+            padding: 10px 20px; 
+            margin: 0 10px; 
+            font-size: 16px; 
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .info {
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Teste Carrossel - Versão Simples</h1>
+    
+    <div class="info">
+        <p>Foto atual: <span id="numero">1</span> / 6</p>
+        <p>Clique nos botões para testar</p>
+    </div>
+    
+    <div class="carousel">
+        <img src="images/carousel/foto1.jpg" alt="Foto 1">
+        <img src="images/carousel/foto2.jpg" alt="Foto 2">
+        <img src="images/carousel/foto3.jpg" alt="Foto 3">
+        <img src="images/carousel/foto4.jpg" alt="Foto 4">
+        <img src="images/carousel/foto5.jpg" alt="Foto 5">
+        <img src="images/carousel/foto6.JPG" alt="Foto 6">
+    </div>
+    
+    <div class="buttons">
+        <button onclick="mudarFoto(-1)">⬅️ Anterior</button>
+        <button onclick="mudarFoto(1)">Próxima ➡️</button>
+        <button onclick="testarTodas()">🔄 Testar Todas</button>
+    </div>
+    
+    <div class="info">
+        <p id="mensagem">Clique em "Próxima" para começar</p>
+    </div>
+    
+    <script>
+        // Variável global
+        let fotoAtual = 0;
+        const totalFotos = 6;
+        
+        // Função simples para mudar foto
+        function mudarFoto(direcao) {
+            // Esconde foto atual
+            document.querySelectorAll('.carousel img')[fotoAtual].style.display = 'none';
+            
+            // Calcula próxima foto
+            fotoAtual = fotoAtual + direcao;
+            if (fotoAtual >= totalFotos) fotoAtual = 0;
+            if (fotoAtual < 0) fotoAtual = totalFotos - 1;
+            
+            // Mostra nova foto
+            const novaFoto = document.querySelectorAll('.carousel img')[fotoAtual];
+            novaFoto.style.display = 'block';
+            
+            // Atualiza contador
+            document.getElementById('numero').textContent = fotoAtual + 1;
+            document.getElementById('mensagem').textContent = 'Foto ' + (fotoAtual + 1) + ' carregada!';
+            
+            console.log('Mudando para foto:', fotoAtual + 1);
+        }
+        
+        // Função para testar todas as fotos
+        function testarTodas() {
+            let i = 0;
+            const intervalo = setInterval(function() {
+                // Esconde todas
+                document.querySelectorAll('.carousel img').forEach(img => img.style.display = 'none');
+                
+                // Mostra atual
+                document.querySelectorAll('.carousel img')[i].style.display = 'block';
+                document.getElementById('numero').textContent = i + 1;
+                document.getElementById('mensagem').textContent = 'Testando foto ' + (i + 1);
+                
+                i++;
+                if (i >= totalFotos) {
+                    clearInterval(intervalo);
+                    document.getElementById('mensagem').textContent = 'Teste concluído!';
+                }
+            }, 1000);
+        }
+        
+        // Inicia
+        console.log('Página carregada!');
+        console.log('Total de imagens:', document.querySelectorAll('.carousel img').length);
+        
+        // Auto-play simples
+        setInterval(function() {
+            mudarFoto(1);
+        }, 3000);
+        
+    </script>
+</body>
+</html>

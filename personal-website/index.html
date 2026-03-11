@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AU-Ê Creche Pet - Seu Pet em Boas Mãos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            console.log('🔧 Inicializando EmailJS...');
+            emailjs.init("g7uF0Elsr-_HOn0ck"); // Você precisará configurar isso
+            console.log('✅ EmailJS inicializado com sucesso!');
+            console.log('🔑 Chave: g7uF0Elsr-_HOn0ck');
+        })();
+    </script>
+    <meta name="theme-color" content="#4A90A4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AU-Ê Pet Care">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="AU-Ê Pet Care - Creche, hotel e adaptação para cães em Osasco. O melhor lar para seu pet quando você não pode estar. Serviços profissionais e seguros.">
+    <meta name="keywords" content="creche para cães, hotel para pets, pet care Osasco, adaptação de cães, creche canina, hotel para cães">
+    <meta name="author" content="AU-Ê Pet Care">
+    <meta property="og:title" content="AU-Ê Pet Care - Creche & Hotel para Pets">
+    <meta property="og:description" content="O melhor lar para seu pet quando você não pode estar. Creche, hotel e adaptação para cães em Osasco.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://au-e-pet-care.com/images/au-e-pet-care-logo.jpg">
+    <meta property="og:url" content="https://au-e-pet-care.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AU-Ê Pet Care - Creche & Hotel para Pets">
+    <meta name="twitter:description" content="O melhor lar para seu pet quando você não pode estar.">
+    <meta name="twitter:image" content="https://au-e-pet-care.com/images/au-e-pet-care-logo.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #87CEEB 0%, #6BB6D6 50%, #4A90A4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.3;
+            transform: scale(1.1);
+            transition: opacity 2s ease-in-out;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.8), rgba(74, 144, 164, 0.8));
+            z-index: 1;
+        }
+        
+        .hero-gradient::before {
+            content: "🐾";
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            top: 10%;
+            left: 5%;
+            animation: float 6s infinite;
+        }
+        
+        .hero-gradient::after {
+            content: "🦴";
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            top: 60%;
+            right: 5%;
+            animation: float 8s infinite;
+        }
+        
+        /* Radio button styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Estilo para quando o radio está selecionado */
+        input[type="radio"]:checked + div {
+            background-color: #4A90A4;
+            color: white;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        
+        input[type="radio"]:checked + div i,
+        input[type="radio"]:checked + div p {
+            color: white !important;
+        }
+        
+        /* Estilo para o label quando o radio está selecionado */
+        label:has(input[type="radio"]:checked) {
+            border-color: #4A90A4 !important;
+            background-color: rgba(74, 144, 164, 0.1) !important;
+            box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.2);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo-nav {
+            width: 40px;
+            height: 40px;
+            background-image: url('images/logo-au-e.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .logo-au {
+            width: 350px;
+            height: 350px;
+            background-image: url('images/logo-au-e.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+        
+        @media (max-width: 640px) {
+            .logo-au {
+                width: 280px;
+                height: 280px;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .logo-au::before {
+            display: none;
+        }
+        
+        .logo-au::after {
+            display: none;
+        }
+        
+        .bone-shape {
+            background: #F39C12;
+            border-radius: 50%;
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        .confetti:nth-child(1) { background: #FF6B6B; top: 20%; left: 10%; animation: float 3s infinite; }
+        .confetti:nth-child(2) { background: #4ECDC4; top: 70%; left: 80%; animation: float 4s infinite; }
+        .confetti:nth-child(3) { background: #45B7D1; top: 30%; left: 70%; animation: float 3.5s infinite; }
+        .confetti:nth-child(4) { background: #96CEB4; top: 80%; left: 20%; animation: float 4.5s infinite; }
+        .confetti:nth-child(5) { background: #FFEAA7; top: 15%; left: 85%; animation: float 3.2s infinite; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes slide-down {
+            from { 
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-slide-down {
+            animation: slide-down 0.3s ease-out;
+        }
+        
+        @media (max-width: 640px) {
+            .hero-gradient {
+                min-height: 100vh;
+                padding-top: 4rem;
+            }
+            
+            .hero-video {
+                display: none;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .card-hover {
+                padding: 1.5rem;
+            }
+            
+            .section-background {
+                padding: 3rem 0;
+            }
+        }
+        
+        .paw-print {
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+        
+        .paw-print:nth-child(6) { content: "🐾"; top: 25%; left: 25%; transform: rotate(30deg); }
+        .paw-print:nth-child(7) { content: "🐾"; top: 65%; left: 65%; transform: rotate(-15deg); }
+        .paw-print:nth-child(8) { content: "🐾"; top: 45%; left: 15%; transform: rotate(45deg); }
+        
+        .section-background {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+            z-index: 1;
+        }
+        
+        .section-background > div {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .image-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .primary-color { color: #4A90A4; }
+        .secondary-color { color: #6BB6D6; }
+        .accent-color { color: #87CEEB; }
+        
+        .bg-primary { background-color: #4A90A4; }
+        .bg-secondary { background-color: #6BB6D6; }
+        .bg-accent { background-color: #87CEEB; }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #4A90A4, #3A7A8E);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #6BB6D6, #5BA6C6);
+            color: white;
+        }
+        
+        .btn-accent {
+            background: linear-gradient(45deg, #87CEEB, #77BEEB);
+            color: white;
+        }
+        
+        .section-decoration {
+            position: relative;
+        }
+        
+        .section-decoration::before {
+            content: "🐾";
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="images/logo-au-e.png" alt="AU-Ê Logo" class="h-12 w-auto sm:h-14 md:h-16">
+                        <div class="ml-2 sm:ml-3 flex flex-col items-center">
+                            <span class="text-lg sm:text-xl md:text-2xl font-bold text-gray-700">AU-Ê</span>
+                            <span class="text-sm sm:text-base md:text-lg text-gray-600">Creche & Hotel</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary-color transition">Início</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary-color transition">Sobre</a>
+                    <a href="#services" class="text-gray-700 hover:text-primary-color transition">Serviços</a>
+                    <a href="#tour-virtual" class="text-gray-700 hover:text-primary-color transition">Tour Virtual</a>
+                    <a href="#petRegistration" class="text-gray-700 hover:text-primary-color transition">Cadastro Pet</a>
+                    <a href="#visit" class="text-gray-700 hover:text-primary-color transition">Agendar Visita</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary-color transition">Contato</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary-color p-2">
+                        <i class="fas fa-bars text-xl sm:text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Início</a>
+                <a href="#about" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Sobre</a>
+                <a href="#services" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Serviços</a>
+                <a href="#tour" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Tour Virtual</a>
+                <a href="#tutor" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Área do Tutor</a>
+                <a href="#visit" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Agendar Visita</a>
+                <a href="#contact" class="block px-3 py-3 text-gray-700 hover:text-primary-color hover:bg-gray-50 rounded-lg transition">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Áudio de fundo -->
+    <audio id="backgroundAudio" loop>
+        <source src="audio/water-ambient.mp3" type="audio/mpeg">
+        <source src="audio/water-ambient.ogg" type="audio/ogg">
+        Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-16">
+        <!-- Vídeo de fundo -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="videos/hero-bg.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="fade-in">
+                <div class="logo-au mb-8">
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+                    AU-Ê Creche & Hotel
+                </h1>
+                <p class="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+                    O lugar favorito do seu melhor aumigo!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+                    <a href="#visit" class="btn-primary px-6 sm:px-8 py-3 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 text-sm sm:text-base">
+                        🐾 Agendar Visita
+                    </a>
+                    <a href="#services" class="btn-secondary px-6 sm:px-8 py-3 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 text-sm sm:text-base">
+                        🦴 Conhecer Serviços
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white section-background">
+        <!-- Para adicionar vídeo de fundo: <video class="video-background" autoplay muted loop><source src="videos/about-bg.mp4" type="video/mp4"></video> -->
+        <!-- Para adicionar imagem de fundo: <img class="image-background" src="images/about-bg.jpg" alt="Background"> -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Sobre a AU-Ê
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Fundada em 2026, somos mais que uma creche pet. Somos uma família dedicada a proporcionar o melhor cuidado 
+                    e bem-estar para seu pet enquanto você está ocupado.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover p-6">
+                    <div class="text-center mb-4">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Cuidado e Carinho</h3>
+                </div>
+                    <p class="text-gray-600">Tratamos cada pet como se fosse nosso, com atenção individual e muito amor.</p>
+                </div>
+                
+                <div class="text-center card-hover p-6">
+                    <div class="text-center mb-4">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Segurança Total</h3>
+                </div>
+                    <p class="text-gray-600">Instalações seguras, monitoramento 24h e equipe treinada para qualquer situação.</p>
+                </div>
+                
+                <div class="text-center card-hover p-6">
+                    <div class="text-center mb-4">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-play text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Diversão Garantida</h3>
+                </div>
+                    <p class="text-gray-600">Atividades recreativas, brinquedos e interação social para pets felizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50 section-background">
+        <!-- Para adicionar vídeo de fundo: <video class="video-background" autoplay muted loop><source src="videos/services-bg.mp4" type="video/mp4"></video> -->
+        <!-- Para adicionar imagem de fundo: <img class="image-background" src="images/services-bg.jpg" alt="Background"> -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Nossos Serviços
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Oferecemos serviços completos para atender todas as necessidades do seu pet
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Creche -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-dog text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Creche</h3>
+                        <p class="text-gray-600">Cuidado diário com atividades recreativas, socialização e muito carinho.</p>
+                    </div>
+                </div>
+                
+                <!-- Hotel -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-home text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Hotel</h3>
+                        <p class="text-gray-600">Hospedagem confortável com camas adequadas, alimentação e cuidados 24h.</p>
+                    </div>
+                </div>
+                
+                <!-- Daycare -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-calendar-day text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Daycare</h3>
+                        <p class="text-gray-600">Cuidado diurno para pets que precisam de atenção durante o dia.</p>
+                    </div>
+                </div>
+                
+                <!-- Banho & Tosa -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover relative">
+                    <div class="absolute top-4 right-4 bg-yellow-400 text-yellow-800 px-2 py-1 rounded-full text-xs font-bold">
+                        Em breve
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cut text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Banho & Tosa</h3>
+                        <p class="text-gray-600">Higiene completa com produtos de qualidade e profissionais experientes.</p>
+                    </div>
+                </div>
+                
+                <!-- Acompanhamento Veterinário -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover relative">
+                    <div class="absolute top-4 right-4 bg-yellow-400 text-yellow-800 px-2 py-1 rounded-full text-xs font-bold">
+                        Em breve
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-md text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Acompanhamento Veterinário</h3>
+                        <p class="text-gray-600">Monitoramento de saúde, vacinas e cuidados médicos preventivos.</p>
+                    </div>
+                </div>
+                
+                <!-- Adestramento Básico -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Adestramento Básico</h3>
+                        <p class="text-gray-600">Adestramento comportamental e esportivo para melhor convivência.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Virtual Section - Full Width -->
+    <section id="tour-virtual" class="py-20 bg-white">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    🎬 Tour Virtual
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Conheça nossas instalações de perto! Assista ao tour virtual ou navegue pela galeria de fotos.
+                </p>
+            </div>
+            
+            <!-- Full Width Video + Carousel Grid -->
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-10">
+                <!-- Video Tour - Same height as carousel (450px) -->
+                <div class="relative h-[300px] sm:h-[400px] lg:h-[450px]">
+                    <video 
+                        id="virtualTourVideo"
+                        class="w-full h-full rounded-xl shadow-xl object-cover"
+                        controls
+                        muted
+                        poster="images/tour-poster.jpg">
+                        <source src="videos/virtual-tour.mp4" type="video/mp4">
+                        <source src="videos/virtual-tour.webm" type="video/webm">
+                        Seu navegador não suporta o vídeo.
+                    </video>
+                    <!-- Video Label -->
+                    <div class="absolute top-4 left-4 bg-primary-color/90 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                        <i class="fas fa-video mr-1"></i> Tour Virtual
+                    </div>
+                </div>
+                
+                <!-- Photo Carousel - Horizontal Infinito -->
+                <div class="w-full bg-white py-8">
+                    <div class="carousel-horizontal overflow-hidden relative h-64 md:h-80 lg:h-96">
+                        <div class="carousel-track flex animate-scroll">
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto1.jpg" alt="Cachorro feliz na creche" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto2.jpg" alt="Pets brincando" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto3.jpg" alt="Instalações da creche" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto4.jpg" alt="Equipe AU-Ê" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto5.jpg" alt="Momentos felizes" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto6.JPG" alt="Mais momentos especiais" class="w-full h-full object-cover">
+                            </div>
+                            
+                            <!-- Duplicadas para loop infinito -->
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto1.jpg" alt="Cachorro feliz na creche" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto2.jpg" alt="Pets brincando" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto3.jpg" alt="Instalações da creche" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto4.jpg" alt="Equipe AU-Ê" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto5.jpg" alt="Momentos felizes" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-slide min-w-[300px] md:min-w-[400px] h-full mx-2 rounded-lg overflow-hidden shadow-lg">
+                                <img src="images/carousel/foto6.JPG" alt="Mais momentos especiais" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CSS para o carrossel horizontal -->
+                <style>
+                    .carousel-track {
+                        animation: scroll 37.5s linear infinite;
+                    }
+                    
+                    @keyframes scroll {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-3320px); } /* 12 slides * 300px + 11 * 20px margin */
+                    }
+                    
+                    @media (min-width: 768px) {
+                        .carousel-track {
+                            animation: scroll 37.5s linear infinite;
+                        }
+                        
+                        @keyframes scroll {
+                            0% { transform: translateX(0); }
+                            100% { transform: translateX(-5040px); } /* 12 slides * 400px + 11 * 20px margin */
+                        }
+                    }
+                </style>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="text-center">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#visit" class="btn-primary px-10 py-4 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 text-lg">
+                        📅 Agendar Visita Presencial
+                    </a>
+                    <button onclick="document.getElementById('virtualTourVideo').requestFullscreen()" class="btn-secondary px-10 py-4 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 text-lg">
+                        🎬 Ver em Tela Cheia
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Section - COM LINK WHATSAPP -->
+    <section id="visit" class="py-20 bg-white section-background">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Agende uma Visita
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Conheça nossas instalações e equipe. Agende uma visita sem compromisso!
+                </p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-xl p-8 text-center">
+                <div class="mb-8">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                        Agende via WhatsApp
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        Clique no botão abaixo para abrir WhatsApp já com mensagem pré-definida
+                    </p>
+                </div>
+                
+                <a href="https://wa.me/5511922100458?text=Olá! Gostaria de agendar uma visita para conhecer a AU-Ê Creche & Hotel. Por favor, me informe os horários disponíveis." 
+                   target="_blank" 
+                   class="inline-block bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition transform hover:scale-105 text-lg shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    Agendar Visita via WhatsApp
+                </a>
+                
+                <div class="mt-8 text-sm text-gray-500">
+                    <p>📱 (11) 92210-0458</p>
+                    <p>⏰ Atendimento: Seg-Sex, 9h-18h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutor Area Section -->
+    <section id="tutor" class="py-20 bg-gray-50 section-background">
+        <!-- Para adicionar vídeo de fundo: <video class="video-background" autoplay muted loop><source src="videos/tutor-bg.mp4" type="video/mp4"></video> -->
+        <!-- Para adicionar imagem de fundo: <img class="image-background" src="images/tutor-bg.jpg" alt="Background"> -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Ficha de Cadastro
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Preencha as informações para cadastrar seu pet em nossos serviços
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <!-- Pet Registration Form -->
+                    <div id="petRegistration">
+                        <!-- Mensagem de Documentos Obrigatórios -->
+                        <div class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6 mb-6">
+                            <div class="text-center">
+                                <h4 class="text-xl font-bold text-yellow-800 mb-4">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                                    DOCUMENTOS NECESSÁRIOS PARA CADASTRO
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-6 text-left">
+                                    <div>
+                                        <h5 class="font-semibold text-yellow-700 mb-2">👤 DOCUMENTOS DO TUTOR:</h5>
+                                        <ul class="space-y-1 text-sm">
+                                            <li>• Cópia do RG ou CNH</li>
+                                            <li>• Comprovante de residência (últimos 30 dias)</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-yellow-700 mb-2">🐕 DOCUMENTOS DO CÃO:</h5>
+                                        <ul class="space-y-1 text-sm">
+                                            <li>• Carteira de vacinação completa</li>
+                                        </ul>
+                                        <div class="bg-blue-50 border border-blue-200 rounded p-3 mt-3">
+                                            <h6 class="font-semibold text-blue-700 mb-2">💉 VACINAS OBRIGATÓRIAS:</h6>
+                                            <ul class="space-y-1 text-xs">
+                                                <li>• V8/10 (Polivalente)</li>
+                                                <li>• Raiva</li>
+                                                <li>• Gripe Canina (Influenza)</li>
+                                            </ul>
+                                            <p class="text-xs text-blue-600 mt-2 italic">
+                                                * Giardiase é a única vacina que pode ser dispensada mediante aceite e responsabilidade do tutor. As demais vacinas (V8/10, Raiva, Gripe Canina) são obrigatórias.
+                                            </p>
+                                            <h6 class="font-semibold text-blue-700 mb-2 mt-3">🐛 TRATAMENTOS OBRIGATÓRIOS:</h6>
+                                            <ul class="space-y-1 text-xs">
+                                                <li>• Antipulgas em dia</li>
+                                                <li>• Vermífugo em dia</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-yellow-700 mt-4">
+                                    <strong>📝 IMPORTANTE:</strong> Tenha estes documentos em mãos antes de iniciar o cadastro. 
+                                    Após finalizar, você será direcionado diretamente para o WhatsApp para enviar os documentos.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-semibold text-center mb-6 text-gray-800">
+                            <i class="fas fa-clipboard-list text-primary-color mr-3"></i>
+                            Ficha de Cadastro
+                        </h3>
+                        <form id="petRegistrationForm" class="space-y-6" onsubmit="return false;">
+                            <!-- Tutor Info -->
+                            <div class="space-y-4 mb-6">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                                    <i class="fas fa-user text-primary-color mr-2"></i>
+                                    Informações do Tutor
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Nome Completo *</label>
+                                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Nome completo do tutor">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Telefone *</label>
+                                        <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="(00) 00000-0000">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">E-mail *</label>
+                                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="email@exemplo.com">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">CPF *</label>
+                                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="000.000.000-00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Pet Info -->
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                                    <i class="fas fa-dog text-primary-color mr-2"></i>
+                                    Informações do Pet
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Nome do Pet *</label>
+                                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Nome do seu pet">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Idade do Pet *</label>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <input type="number" min="0" max="30" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Anos">
+                                            <input type="number" min="0" max="11" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Meses">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Raça *</label>
+                                        <div class="relative">
+                                            <input type="text" id="breedInput" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Digite ou selecione a raça" list="breedList" autocomplete="off">
+                                                <datalist id="breedList">
+                                                <option value="SRD - Sem Raça Definida">SRD - Sem Raça Definida</option>
+                                                <option value="Beagle">Beagle</option>
+                                                <option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
+                                                <option value="Basset Hound">Basset Hound</option>
+                                                <option value="Border Collie">Border Collie</option>
+                                                <option value="Bulldog Francês">Bulldog Francês</option>
+                                                <option value="Chihuahua">Chihuahua</option>
+                                                <option value="Cocker Spaniel">Cocker Spaniel</option>
+                                                <option value="Dálmata">Dálmata</option>
+                                                <option value="Doberman">Doberman</option>
+                                                <option value="Fila Brasileiro">Fila Brasileiro</option>
+                                                <option value="Golden Retriever">Golden Retriever</option>
+                                                <option value="Great Dane">Great Dane</option>
+                                                <option value="Labrador Retriever">Labrador Retriever</option>
+                                                <option value="Lhasa Apso">Lhasa Apso</option>
+                                                <option value="Maltês">Maltês</option>
+                                                <option value="Pastor Alemão">Pastor Alemão</option>
+                                                <option value="Pinscher">Pinscher</option>
+                                                <option value="Poodle">Poodle</option>
+                                                <option value="Pug">Pug</option>
+                                                <option value="Rottweiler">Rottweiler</option>
+                                                <option value="Schnauzer">Schnauzer</option>
+                                                <option value="Shih Tzu">Shih Tzu</option>
+                                                <option value="Staffordshire Bull Terrier">Staffordshire Bull Terrier</option>
+                                                <option value="West Highland White Terrier">West Highland White Terrier</option>
+                                                <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+                                                <option value="Outra">Outra</option>
+                                            </datalist>
+                                        </div>
+                                        <div id="otherBreedContainer" style="display: none;" class="mt-3">
+                                            <label class="block text-gray-700 font-medium mb-2">Digite a raça do seu cão:</label>
+                                            <input type="text" id="otherBreedInput" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Informe a raça não listada">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Novos campos adicionados -->
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Sexo do Pet *</label>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="radio" name="gender" value="macho" required class="mr-2">
+                                                <span class="flex items-center">
+                                                    <i class="fas fa-mars text-blue-500 mr-2"></i>
+                                                    Macho
+                                                </span>
+                                            </label>
+                                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="radio" name="gender" value="femea" required class="mr-2">
+                                                <span class="flex items-center">
+                                                    <i class="fas fa-venus text-pink-500 mr-2"></i>
+                                                    Fêmea
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">O pet é castrado? *</label>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="radio" name="isNeutered" value="sim" required class="mr-2">
+                                                <span class="flex items-center">
+                                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                                    Sim
+                                                </span>
+                                            </label>
+                                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="radio" name="isNeutered" value="nao" required class="mr-2">
+                                                <span class="flex items-center">
+                                                    <i class="fas fa-times-circle text-red-500 mr-2"></i>
+                                                    Não
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Temperamento do Pet *</label>
+                                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                            <option value="">Selecione o temperamento</option>
+                                            <option value="muita-energia">🔥 Muita energia - Muito ativo e brincalhão</option>
+                                            <option value="media-energia">⚡ Média energia - Ativo mas equilibrado</option>
+                                            <option value="baixa-energia">😌 Baixa energia - Calmo e tranquilo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Porte *</label>
+                                    <select name="porte" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                        <option value="">Selecione...</option>
+                                        <option value="pequeno">Pequeno</option>
+                                        <option value="medio">Médio</option>
+                                        <option value="grande">Grande</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Informações Adicionais do Pet -->
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                    <i class="fas fa-heartbeat text-primary-color mr-2"></i>
+                                    Saúde e Bem-Estar
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Doenças Pré-Existentes</label>
+                                        <textarea name="doencas" rows="2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Descreva qualquer condição médica pré-existente (se não houver, deixe em branco)"></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Alergias</label>
+                                        <textarea name="alergias" rows="2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Descreva qualquer alergia (alimentar, medicamentosa, etc. Se não houver, deixe em branco)"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Rotina de Alimentação -->
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                    <i class="fas fa-utensils text-primary-color mr-2"></i>
+                                    Rotina de Alimentação
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Vezes por dia</label>
+                                        <select name="vezes_alimentacao" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                            <option value="">Selecione</option>
+                                            <option value="1 vez">1 vez</option>
+                                            <option value="2 vezes">2 vezes</option>
+                                            <option value="3 vezes">3 vezes</option>
+                                            <option value="4 vezes">4 vezes</option>
+                                            <option value="Livre">Livre (racao disponivel)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Gramas por refeição</label>
+                                        <input type="text" name="gramas_refeicao" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Ex: 200g">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comportamento e Preferências -->
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                    <i class="fas fa-gamepad text-primary-color mr-2"></i>
+                                    Comportamento e Preferências
+                                </h4>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Tipos de Brincadeira Preferidas</label>
+                                    <textarea name="brincadeiras" rows="2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Ex: Buscar bolinha, brincar de pega-pega, nadar, brinquedos de morder..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Autorizações e Contato -->
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                    <i class="fas fa-shield-alt text-primary-color mr-2"></i>
+                                    Autorizações e Contato
+                                </h4>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Contato Veterinário</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                            <input type="radio" name="contato_vet" value="nosso_parceiro" required class="mr-2">
+                                            <span class="flex-1">Autorizo atendimento via veterinário parceiro da AU-Ê</span>
+                                        </label>
+                                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                            <input type="radio" name="contato_vet" value="meu_vet" required class="mr-2">
+                                            <div class="flex-1">
+                                                <span class="block">Prefiro que entrem em contato com meu veterinário</span>
+                                                <input type="text" name="contato_vet_info" class="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Nome/Telefone do veterinário">
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                            <input type="checkbox" name="autoriza_piscina" checked class="mr-2">
+                                            <span class="flex-1">
+                                                <i class="fas fa-swimming-pool text-blue-500 mr-2"></i>
+                                                Autorizo brincadeiras na piscina (dias ensolarados)
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                            <input type="checkbox" name="autoriza_fotos" checked class="mr-2">
+                                            <span class="flex-1">
+                                                <i class="fas fa-camera text-purple-500 mr-2"></i>
+                                                Autorizo publicação de fotos nas redes sociais
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Service Selection -->
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                                    <i class="fas fa-concierge-bell text-primary-color mr-2"></i>
+                                    Selecione o Serviço Desejado
+                                </h4>
+                                
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <label class="border-2 border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary-color transition">
+                                        <input type="radio" name="service" value="creche" class="sr-only" onchange="toggleServiceFields('creche')">
+                                        <div class="text-center">
+                                            <i class="fas fa-dog text-2xl text-primary-color mb-2"></i>
+                                            <p class="font-medium">Creche</p>
+                                            <p class="text-sm text-gray-600">Cuidados diários</p>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="border-2 border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary-color transition">
+                                        <input type="radio" name="service" value="hotel" class="sr-only" onchange="toggleServiceFields('hotel')">
+                                        <div class="text-center">
+                                            <i class="fas fa-home text-2xl text-primary-color mb-2"></i>
+                                            <p class="font-medium">Hotel</p>
+                                            <p class="text-sm text-gray-600">Hospedagem</p>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="border-2 border-gray-300 rounded-lg p-4 cursor-pointer hover:border-primary-color transition">
+                                        <input type="radio" name="service" value="ambos" class="sr-only" onchange="toggleServiceFields('ambos')">
+                                        <div class="text-center">
+                                            <i class="fas fa-paw text-2xl text-primary-color mb-2"></i>
+                                            <p class="font-medium">Ambos</p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <!-- Frequência para Creche -->
+                                <div id="frequenciaField" class="space-y-4" style="display: none;">
+                                    <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-calendar-alt text-primary-color mr-2"></i>
+                                        Frequência Pretendida
+                                    </h4>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Dias da Semana</label>
+                                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                            <label class="flex items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="checkbox" name="dias_semana" value="Segunda" class="mr-2">
+                                                <span>Segunda</span>
+                                            </label>
+                                            <label class="flex items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="checkbox" name="dias_semana" value="Terça" class="mr-2">
+                                                <span>Terça</span>
+                                            </label>
+                                            <label class="flex items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="checkbox" name="dias_semana" value="Quarta" class="mr-2">
+                                                <span>Quarta</span>
+                                            </label>
+                                            <label class="flex items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="checkbox" name="dias_semana" value="Quinta" class="mr-2">
+                                                <span>Quinta</span>
+                                            </label>
+                                            <label class="flex items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="checkbox" name="dias_semana" value="Sexta" class="mr-2">
+                                                <span>Sexta</span>
+                                            </label>
+                                            <label class="flex items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                                                <input type="checkbox" name="dias_semana" value="Sábado" class="mr-2">
+                                                <span>Sábado</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Data Pretendida para Hotel -->
+                                <div id="dataHotelField" class="space-y-4" style="display: none;">
+                                    <h4 class="text-lg font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-calendar-check text-primary-color mr-2"></i>
+                                        Período Pretendido
+                                    </h4>
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-gray-700 font-medium mb-2">Data de Check-in</label>
+                                            <input type="date" name="data_checkin" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                        </div>
+                                        <div>
+                                            <label class="block text-gray-700 font-medium mb-2">Data de Check-out</label>
+                                            <input type="date" name="data_checkout" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Observações sobre o período</label>
+                                        <textarea name="observacoes_periodo" rows="2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-transparent" placeholder="Ex: Período de férias, viagem de negócios, etc."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" onclick="handlePetRegistration()" class="w-full btn-primary py-3 rounded-lg hover:shadow-lg transition transform hover:scale-105 font-semibold">
+                                🐾 Cadastrar Pet
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 section-background">
+        <!-- Para adicionar vídeo de fundo: <video class="video-background" autoplay muted loop><source src="videos/contact-bg.mp4" type="video/mp4"></video> -->
+        <!-- Para adicionar imagem de fundo: <img class="image-background" src="images/contact-bg.jpg" alt="Background"> -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Sobre a AU-Ê
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Fundada em 2026, somos uma creche e hotel dedicados ao bem-estar e felicidade do seu pet
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Telefone</h3>
+                    <p class="text-gray-600">(11) 92210-0458</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">E-mail</h3>
+                    <p class="text-gray-600">aue.petcare@gmail.com</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Endereço</h3>
+                    <p class="text-gray-600">Av. Santo Antonio, 1568</p>
+                    <p class="text-gray-600">Osasco - SP</p>
+                </div>
+            </div>
+            
+            <!-- Mapa Interativo -->
+            <div class="mt-12">
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Av.+Santo+Antonio+1568+Osasco+SP" target="_blank" class="block">
+                        <img 
+                            src="images/endereco/mapa.jpg" 
+                            alt="Mapa AU-Ê Creche & Hotel" 
+                            class="w-full h-[400px] object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                            title="Clique para abrir no Google Maps">
+                    </a>
+                    <div class="text-center mt-2">
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-map-marker-alt text-primary-color mr-2"></i>
+                            Clique no mapa para abrir no Google Maps
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <div class="flex justify-center space-x-6">
+                    <a href="https://instagram.com/aue.petcare" target="_blank" class="w-12 h-12 bg-secondary text-white rounded-full flex items-center justify-center hover:bg-secondary-dark transition transform hover:scale-110">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5511922100458" target="_blank" class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center hover:bg-accent-dark transition transform hover:scale-110">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Form -->
+    <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6 border-b">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-800"></h3>
+                    <button onclick="closeForm()" class="float-right text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="p-6">
+                    <form id="serviceForm" class="space-y-6">
+                        <!-- Dados do Tutor -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-purple-600">Dados do Tutor</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Nome Completo</label>
+                                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Telefone</label>
+                                    <input type="tel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">E-mail</label>
+                                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">CPF</label>
+                                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dados do Pet -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-purple-600">Dados do Pet</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Nome do Pet</label>
+                                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Idade</label>
+                                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Raça</label>
+                                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Porte</label>
+                                    <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                        <option value="">Selecione...</option>
+                                        <option>Pequeno</option>
+                                        <option>Médio</option>
+                                        <option>Grande</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Sexo</label>
+                                    <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                        <option value="">Selecione...</option>
+                                        <option>Macho</option>
+                                        <option>Fêmea</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Saúde do Pet -->
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-purple-600">Informações de Saúde</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Vacinas em dia?</label>
+                                    <div class="flex space-x-4">
+                                        <label><input type="radio" name="vacinas" value="sim" required> Sim</label>
+                                        <label><input type="radio" name="vacinas" value="nao" required> Não</label>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Possui alguma alergia?</label>
+                                    <textarea rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"></textarea>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Toma algum medicamento?</label>
+                                    <textarea rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"></textarea>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Possui alguma condição médica especial?</label>
+                                    <textarea rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"></textarea>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">É castrado?</label>
+                                    <div class="flex space-x-4">
+                                        <label><input type="radio" name="castrado" value="sim" required> Sim</label>
+                                        <label><input type="radio" name="castrado" value="nao" required> Não</label>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Tem histórico de agressividade?</label>
+                                    <div class="flex space-x-4">
+                                        <label><input type="radio" name="agressividade" value="sim" required> Sim</label>
+                                        <label><input type="radio" name="agressividade" value="nao" required> Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary py-3 rounded-lg hover:shadow-lg transition transform hover:scale-105 font-semibold">
+                        📝 Enviar Solicitação
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botões Flutuantes WhatsApp e Instagram -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <a href="https://instagram.com/aue.petcare" target="_blank" class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300" title="Siga no Instagram">
+            <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a href="https://wa.me/5511922100458" target="_blank" class="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300" title="Fale no WhatsApp">
+            <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4 primary-color">AU-Ê Creche & Hotel 🐾</div>
+                <p class="text-gray-400 mb-4">Cuidando do seu pet como se fosse nosso</p>
+                <p class="text-gray-500 text-sm">&copy; 2026 AU-Ê Creche & Hotel. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Áudio de fundo
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('backgroundAudio');
+            
+            // Configurar volume baixo (20%)
+            audio.volume = 0.2;
+            
+            // Tentar reproduzir automaticamente (pode ser bloqueado pelo navegador)
+            audio.play().catch(function(error) {
+                console.log('Autoplay bloqueado, aguardando interação do usuário');
+                
+                // Adicionar evento de clique para iniciar o áudio
+                document.addEventListener('click', function() {
+                    audio.play().catch(function(e) {
+                        console.log('Não foi possível reproduzir o áudio:', e);
+                    });
+                }, { once: true });
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+            
+            // Add animation classes
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('animate-slide-down');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            
+            if (!mobileMenu.classList.contains('hidden') && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form modal functions
+        function openForm(service) {
+            const modal = document.getElementById('formModal');
+            const title = document.getElementById('modalTitle');
+            
+            const titles = {
+                'creche': 'Agendar Creche',
+                'hotel': 'Agendar Hotel',
+                'adaptacao': 'Agendar Adaptação'
+            };
+            
+            title.textContent = titles[service];
+            modal.classList.remove('hidden');
+        }
+
+        function closeForm() {
+            document.getElementById('formModal').classList.add('hidden');
+        }
+
+        // Service Form - COM ENVIO DE EMAIL
+        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = this.querySelector('input[placeholder="Nome Completo"]').value;
+            const phone = this.querySelector('input[placeholder="Telefone"]').value;
+            const email = this.querySelector('input[placeholder="E-mail"]').value;
+            const cpf = this.querySelector('input[placeholder="CPF"]').value;
+            const petName = this.querySelector('input[placeholder="Nome do Pet"]').value;
+            const petBreed = this.querySelector('input[placeholder="Raça do Pet"]').value;
+            const petAge = this.querySelector('input[placeholder="Idade do Pet"]').value;
+            const service = document.getElementById('modalTitle').textContent;
+            
+            // Create service request
+            const serviceRequest = {
+                date: new Date().toLocaleDateString('pt-BR'),
+                type: service,
+                tutorName: name,
+                tutorPhone: phone,
+                tutorEmail: email,
+                tutorCpf: cpf,
+                petName: petName,
+                petBreed: petBreed,
+                petAge: petAge,
+                status: 'pending'
+            };
+            
+            // Save to localStorage
+            let services = JSON.parse(localStorage.getItem('services') || '[]');
+            services.push(serviceRequest);
+            localStorage.setItem('services', JSON.stringify(services));
+            
+            // Enviar email com EmailJS
+            emailjs.send("service_1wwk81o", "template_p7wp6qq", {
+                to_email: "aue.petcare@gmail.com",
+                subject: `🐕 NOVA SOLICITAÇÃO - ${service}`,
+                tutor_name: name,
+                tutor_phone: phone,
+                tutor_email: email,
+                tutor_cpf: cpf,
+                pet_name: petName,
+                pet_age: petAge,
+                pet_breed: petBreed,
+                pet_gender: 'N/A (Serviço)',
+                pet_neutered: 'N/A (Serviço)',
+                pet_temperament: 'N/A (Serviço)',
+                service: service,
+                registration_date: new Date().toLocaleString('pt-BR'),
+                file_attachments: '<p>N/A - Solicitação de serviço</p>',
+                message: `SOLICITAÇÃO DE SERVIÇO!\n\nServiço: ${service}\nPet: ${petName}\nRaça: ${petBreed}\nIdade: ${petAge}\n\nAguardando aprovação.`,
+                reply_to: email
+            })
+            .then(function(response) {
+                console.log('✅ Email de serviço enviado com sucesso!');
+                
+                alert(`🎉 SOLICITAÇÃO ENVIADA COM SUCESSO!\n\nNome: ${name}\nPet: ${petName}\nRaça: ${petBreed}\nIdade: ${petAge}\nServiço: ${service}\n\n📧 Email enviado para: aue.petcare@gmail.com\n\n✅ Aguardando aprovação!`);
+                
+                // Reset form
+                document.getElementById('serviceForm').reset();
+                
+                // Close modal
+                closeForm();
+            })
+            .catch(function(error) {
+                console.error('❌ Erro ao enviar email de serviço:', error);
+                alert(`❌ Erro ao enviar solicitação: ${error.text || error.message}`);
+            });
+        });
+
+        // Visit Form - COM ENVIO DE EMAIL E DEBUG
+        document.getElementById('visitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            console.log('📅 Formulário de visita submetido!');
+            
+            // Get form values
+            const name = this.querySelector('input[placeholder="Seu nome completo"]').value;
+            const phone = this.querySelector('input[placeholder="Seu telefone"]').value;
+            const email = this.querySelector('input[placeholder="Seu e-mail"]').value;
+            const date = this.querySelector('input[type="date"]').value;
+            const time = this.querySelector('select[name="time"]').value;
+            const message = this.querySelector('textarea[name="message"]').value;
+            
+            console.log('📋 Dados capturados:', { name, phone, email, date, time, message });
+            
+            // Verificar EmailJS
+            if (typeof emailjs === 'undefined') {
+                console.error('❌ EmailJS não está carregado!');
+                alert('❌ EmailJS não está carregado. Recarregue a página.');
+                return;
+            }
+            
+            console.log('✅ EmailJS está carregado');
+            
+            let visits = JSON.parse(localStorage.getItem('visits') || '[]');
+            const visitRequest = {
+                name, phone, email, date, time, message,
+                timestamp: new Date().toISOString()
+            };
+            visits.push(visitRequest);
+            localStorage.setItem('visits', JSON.stringify(visits));
+            
+            console.log('💾 Dados salvos no localStorage');
+            
+            // Enviar email com EmailJS
+            console.log('📧 Enviando email...');
+            console.log('🔑 Usando Service ID: service_1wwk81o');
+            console.log('📋 Usando Template ID: template_bevn63a');
+            console.log('📧 Email destino: aue.petcare@gmail.com');
+            
+            emailjs.send("service_1wwk81o", "template_bevn63a", {
+                to_email: "aue.petcare@gmail.com",
+                subject: `📅 NOVA VISITA AGENDADA - ${name}`,
+                tutor_name: name,
+                tutor_phone: phone,
+                tutor_email: email,
+                tutor_cpf: 'N/A (Visita)',
+                pet_name: 'N/A (Visita)',
+                pet_age: 'N/A (Visita)',
+                pet_breed: 'N/A (Visita)',
+                pet_gender: 'N/A (Visita)',
+                pet_neutered: 'N/A (Visita)',
+                pet_temperament: 'N/A (Visita)',
+                service: 'Visita Presencial',
+                registration_date: new Date().toLocaleString('pt-BR'),
+                file_attachments: '<p>N/A - Agendamento de visita</p>',
+                message: `VISITA AGENDADA!\n\nData: ${date}\nHorário: ${time}\nMensagem: ${message}\n\nAguardando confirmação.`,
+                reply_to: email
+            })
+            .then(function(response) {
+                console.log('✅ Email de visita enviado com sucesso!');
+                
+                alert(`📅 VISITA AGENDADA COM SUCESSO!\n\nNome: ${name}\nData: ${date}\nHorário: ${time}\nTelefone: ${phone}\nEmail: ${email}\n\n📧 Email enviado para: aue.petcare@gmail.com\n\n✅ Aguardando confirmação!`);
+                
+                // Reset form
+                document.getElementById('visitForm').reset();
+                
+                // Close modal if open
+                const modal = document.getElementById('formModal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+            })
+            .catch(function(error) {
+                console.error('❌ Erro ao enviar email de visita:', error);
+                alert(`❌ Erro ao agendar visita: ${error.text || error.message}`);
+            });
+        });
+
+        // Tutor Login Form
+        document.getElementById('tutorLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login realizado com sucesso!');
+            showTutorRegister();
+        });
+
+        // Função para alternar campos de serviço
+        function toggleServiceFields(service) {
+            const frequenciaField = document.getElementById('frequenciaField');
+            const dataHotelField = document.getElementById('dataHotelField');
+            
+            // Esconder todos os campos primeiro
+            frequenciaField.style.display = 'none';
+            dataHotelField.style.display = 'none';
+            
+            // Mostrar campos específicos conforme o serviço
+            if (service === 'creche') {
+                frequenciaField.style.display = 'block';
+            } else if (service === 'hotel') {
+                dataHotelField.style.display = 'block';
+            } else if (service === 'ambos') {
+                frequenciaField.style.display = 'block';
+                dataHotelField.style.display = 'block';
+            }
+        }
+
+        // Pet Registration Form - CORREÇÃO DEFINITIVA
+        function handlePetRegistration() {
+            console.log('🔥 BOTÃO CLICADO - FUNÇÃO DIRETA!');
+            
+            const form = document.getElementById('petRegistrationForm');
+            
+            // Get form values
+            const formData = new FormData(form);
+            const selectedService = document.querySelector('input[name="service"]:checked');
+            const otherBreed = document.getElementById('otherBreedInput').value;
+            const breedValue = document.getElementById('breedInput').value;
+            
+            console.log('📋 Serviço selecionado:', selectedService?.value);
+            
+            // Get tutor info
+            const tutorName = form.querySelector('input[placeholder="Nome completo do tutor"]').value;
+            const tutorPhone = form.querySelector('input[placeholder="(00) 00000-0000"]').value;
+            const tutorEmail = form.querySelector('input[placeholder="email@exemplo.com"]').value;
+            const tutorCpf = form.querySelector('input[placeholder="000.000.000-00"]').value;
+            
+            console.log('👤 Dados tutor:', { tutorName, tutorPhone, tutorEmail, tutorCpf });
+            
+            // Get pet info
+            const petName = form.querySelector('input[placeholder="Nome do seu pet"]').value;
+            const petAgeYears = form.querySelector('input[placeholder="Anos"]').value;
+            const petAgeMonths = form.querySelector('input[placeholder="Meses"]').value;
+            const petAge = `${petAgeYears} anos e ${petAgeMonths} meses`;
+            
+            console.log('🐕 Dados pet:', { petName, petAge });
+            
+            // Get new fields
+            const gender = form.querySelector('input[name="gender"]:checked')?.value || '';
+            const isNeutered = form.querySelector('input[name="isNeutered"]:checked')?.value || '';
+            const temperament = form.querySelector('select')?.value || '';
+            
+            // Health fields
+            const doencas = form.querySelector('textarea[name="doencas"]').value || 'Nenhuma informada';
+            const alergias = form.querySelector('textarea[name="alergias"]').value || 'Nenhuma informada';
+            
+            // Feeding fields
+            const vezesAlimentacao = form.querySelector('select[name="vezes_alimentacao"]').value;
+            const gramasRefeicao = form.querySelector('input[name="gramas_refeicao"]').value;
+            
+            // Behavior fields
+            const brincadeiras = form.querySelector('textarea[name="brincadeiras"]').value || 'Não informado';
+            
+            // Vet contact
+            const contatoVet = form.querySelector('input[name="contato_vet"]:checked')?.value || '';
+            const contatoVetInfo = form.querySelector('input[name="contato_vet_info"]').value || '';
+            
+            // Authorizations
+            const autorizaPiscina = form.querySelector('input[name="autoriza_piscina"]').checked;
+            const autorizaFotos = form.querySelector('input[name="autoriza_fotos"]').checked;
+            
+            // Service-specific fields
+            const diasSemana = Array.from(form.querySelectorAll('input[name="dias_semana"]:checked'))
+                .map(cb => cb.value).join(', ') || 'Não informado';
+            const dataCheckin = form.querySelector('input[name="data_checkin"]')?.value || '';
+            const dataCheckout = form.querySelector('input[name="data_checkout"]')?.value || '';
+            const observacoesPeriodo = form.querySelector('textarea[name="observacoes_periodo"]')?.value || '';
+            
+            console.log('📋 Campos adicionais capturados');
+            
+            // Determine final breed value
+            const finalBreed = breedValue === 'Outra' ? otherBreed : breedValue;
+            
+            // Validate service selection
+            if (!selectedService) {
+                alert('❌ Por favor, selecione um serviço desejado.');
+                return;
+            }
+            
+            // Validate other breed if "Outra" is selected
+            if (breedValue === 'Outra' && !otherBreed.trim()) {
+                alert('❌ Por favor, informe a raça do seu cão.');
+                return;
+            }
+            
+            // VALIDAÇÃO DE CAMPOS ESSENCIAIS
+            if (!tutorName.trim()) {
+                alert('❌ Por favor, informe o nome completo do tutor.');
+                return;
+            }
+            
+            if (!tutorPhone.trim()) {
+                alert('❌ Por favor, informe o telefone do tutor.');
+                return;
+            }
+            
+            if (!tutorEmail.trim()) {
+                alert('❌ Por favor, informe o email do tutor.');
+                return;
+            }
+            
+            if (!tutorCpf.trim()) {
+                alert('❌ Por favor, informe o CPF do tutor.');
+                return;
+            }
+            
+            if (!petName.trim()) {
+                alert('❌ Por favor, informe o nome do pet.');
+                return;
+            }
+            
+            if (!petAgeYears.trim() || !petAgeMonths.trim()) {
+                alert('❌ Por favor, informe a idade do pet (anos e meses).');
+                return;
+            }
+            
+            if (!breedValue.trim()) {
+                alert('❌ Por favor, informe a raça do pet.');
+                return;
+            }
+            
+            if (!gender) {
+                alert('❌ Por favor, selecione o sexo do pet.');
+                return;
+            }
+            
+            if (!isNeutered) {
+                alert('❌ Por favor, informe se o pet é castrado.');
+                return;
+            }
+            
+            if (!temperament) {
+                alert('❌ Por favor, selecione o temperamento do pet.');
+                return;
+            }
+            
+            // Validar porte
+            const porte = form.querySelector('select[name="porte"]')?.value || '';
+            if (!porte) {
+                alert('❌ Por favor, selecione o porte do pet.');
+                return;
+            }
+            
+            // Validar alimentação
+            if (!vezesAlimentacao) {
+                alert('❌ Por favor, selecione as vezes de alimentação por dia.');
+                return;
+            }
+            
+            if (!gramasRefeicao.trim()) {
+                alert('❌ Por favor, informe as gramas por refeição.');
+                return;
+            }
+            
+            // Get service name for message
+            let serviceName = '';
+            switch(selectedService.value) {
+                case 'creche':
+                    serviceName = 'Creche';
+                    break;
+                case 'hotel':
+                    serviceName = 'Hotel';
+                    break;
+                case 'ambos':
+                    serviceName = 'Creche + Hotel';
+                    break;
+            }
+            
+            console.log('✅ Validações OK, preparando envio...');
+            
+            // Verificar EmailJS
+            if (typeof emailjs === 'undefined') {
+                console.error('❌ EmailJS não está carregado!');
+                alert('❌ EmailJS não está carregado. Recarregue a página.');
+                return;
+            }
+            
+            console.log('✅ EmailJS está carregado');
+            
+            // Desabilitar botão para evitar duplo clique
+            const submitButton = form.querySelector('button[type="button"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '📧 Enviando...';
+            submitButton.disabled = true;
+            
+            // Enviar email com EmailJS
+            console.log('📧 Enviando email...');
+            emailjs.send("service_1wwk81o", "template_p7wp6qq", {
+                to_email: "aue.petcare@gmail.com",
+                subject: `🐕 NOVO CADASTRO - ${petName}`,
+                tutor_name: tutorName,
+                tutor_phone: tutorPhone,
+                tutor_email: tutorEmail,
+                tutor_cpf: tutorCpf,
+                pet_name: petName,
+                pet_age: petAge,
+                pet_breed: finalBreed,
+                pet_gender: gender,
+                pet_neutered: isNeutered,
+                pet_temperament: temperament,
+                doencas: doencas,
+                alergias: alergias,
+                vezes_alimentacao: vezesAlimentacao,
+                gramas_refeicao: gramasRefeicao,
+                brincadeiras: brincadeiras,
+                contato_vet: contatoVet === 'nosso_parceiro' ? 'Autorizo veterinário parceiro AU-Ê' : `Meu veterinário: ${contatoVetInfo}`,
+                autoriza_piscina: autorizaPiscina ? 'SIM' : 'NÃO',
+                autoriza_fotos: autorizaFotos ? 'SIM' : 'NÃO',
+                dias_semana: diasSemana,
+                data_checkin: dataCheckin,
+                data_checkout: dataCheckout,
+                observacoes_periodo: observacoesPeriodo,
+                service: serviceName,
+                registration_date: new Date().toLocaleString('pt-BR'),
+                reply_to: tutorEmail
+            })
+            .then(function(response) {
+                console.log('✅ Email enviado com sucesso!', response);
+                
+                // Mostrar modal de sucesso
+                showSuccessModal(tutorName, petName, petAge, finalBreed, serviceName);
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            })
+            .catch(function(error) {
+                console.error('❌ Erro ao enviar email:', error);
+                
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                alert(`❌ Erro ao enviar cadastro: ${error.text || error.message}\n\nTente novamente ou entre em contato via WhatsApp.`);
+            });
+        }
+
+        // Remover event listener antigo para evitar conflitos
+        document.getElementById('petRegistrationForm').removeEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+
+        // Modal de Sucesso com Documentos
+        function showSuccessModal(tutorName, petName, petAge, finalBreed, serviceName) {
+            const modal = document.createElement('div');
+            modal.id = 'successModal';
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-8 max-w-2xl mx-4 transform transition-all max-h-[90vh] overflow-y-auto">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-green-600">🎉 CADASTRO REALIZADO COM SUCESSO!</h3>
+                        
+                        <div class="bg-gray-50 rounded-lg p-6 mb-6 text-left">
+                            <h4 class="font-semibold mb-3 text-gray-800">📋 Dados do Cadastro:</h4>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <strong>Tutor:</strong> ${tutorName}<br>
+                                    <strong>Pet:</strong> ${petName}<br>
+                                    <strong>Idade:</strong> ${petAge}<br>
+                                    <strong>Raça:</strong> ${finalBreed}
+                                </div>
+                                <div>
+                                    <strong>Serviço:</strong> ${serviceName}<br>
+                                    <strong>Data:</strong> ${new Date().toLocaleString('pt-BR')}<br>
+                                    <strong>Email:</strong> Enviado para aue.petcare@gmail.com
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6 mb-6 text-left">
+                            <h4 class="font-bold mb-4 text-yellow-800">📋 DOCUMENTOS OBRIGATÓRIOS PARA APROVAÇÃO</h4>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h5 class="font-semibold text-yellow-700 mb-2">👤 DOCUMENTOS DO TUTOR:</h5>
+                                    <ul class="space-y-1 text-sm">
+                                        <li>• Cópia do RG ou CNH</li>
+                                        <li>• Comprovante de residência (últimos 30 dias)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-yellow-700 mb-2">🐕 DOCUMENTOS DO CÃO:</h5>
+                                    <ul class="space-y-1 text-sm">
+                                        <li>• Carteira de vacinação completa</li>
+                                    </ul>
+                                    <div class="bg-blue-50 border border-blue-200 rounded p-3 mt-3">
+                                        <h6 class="font-semibold text-blue-700 mb-2">💉 VACINAS OBRIGATÓRIAS:</h6>
+                                        <ul class="space-y-1 text-xs">
+                                            <li>• V8/10 (Polivalente)</li>
+                                            <li>• Raiva</li>
+                                            <li>• Gripe Canina (Influenza)</li>
+                                            <li>• Giardiase</li>
+                                        </ul>
+                                        <p class="text-xs text-blue-600 mt-2 italic">
+                                            * Vacinação e antipulgas/antiparasitários podem ser dispensados mediante aceite e responsabilidade do tutor.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                            <h4 class="font-semibold text-green-800 mb-2">📱 PRÓXIMOS PASSOS:</h4>
+                            <ol class="text-sm text-left space-y-2">
+                                <li><strong>1.</strong> Envie os documentos acima via WhatsApp</li>
+                                <li><strong>2.</strong> Aguarde nossa análise e aprovação</li>
+                                <li><strong>3.</strong> Receba confirmação e agende seu primeiro dia!</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="flex gap-4 justify-center">
+                            <a href="https://wa.me/5511922100458?text=Olá! Acabei de fazer o cadastro do meu pet e gostaria de enviar os documentos." 
+                               target="_blank" 
+                               class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition flex items-center">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                Enviar Documentos Agora
+                            </a>
+                            <button onclick="closeSuccessModal()" 
+                                    class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition">
+                                Fechar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Show Pet Registration
+        function showTutorRegister() {
+            document.getElementById('tutorLogin').classList.add('hidden');
+            document.getElementById('petRegistration').classList.remove('hidden');
+        }
+
+        // Função de envio de email - SIMPLIFICADA SEM GOOGLE DRIVE
+        function sendEmailWithDocuments(data) {
+            const submitButton = document.querySelector('#petRegistrationForm button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = ' Enviando...';
+            submitButton.disabled = true;
+
+            console.log(' Enviando email simplificado...');
+            console.log(' Dados:', data);
+
+            const registrationId = Date.now();
+            
+            // Salvar no localStorage para painel admin
+            const petRegistration = {
+                id: registrationId,
+                tutorName: data.tutorName,
+                tutorPhone: data.tutorPhone,
+                tutorEmail: data.tutorEmail,
+                tutorCpf: data.tutorCpf,
+                petName: data.petName,
+                petAge: data.petAge,
+                breed: data.breed,
+                gender: data.gender,
+                isNeutered: data.isNeutered,
+                temperament: data.temperament,
+                service: data.service,
+                registrationDate: new Date().toISOString(),
+                status: 'pending',
+                documentsSent: false
+            };
+            
+            let pets = JSON.parse(localStorage.getItem('pets') || '[]');
+            pets.push(petRegistration);
+            localStorage.setItem('pets', JSON.stringify(pets));
+            
+            // Enviar email só com EmailJS
+            emailjs.send("service_1wwk81o", "template_p7wp6qq", {
+                to_email: "aue.petcare@gmail.com",
+                subject: ` NOVO CADASTRO - ${data.petName}`,
+                tutor_name: data.tutorName,
+                tutor_phone: data.tutorPhone,
+                tutor_email: data.tutorEmail,
+                tutor_cpf: data.tutorCpf,
+                pet_name: data.petName,
+                pet_age: data.petAge,
+                pet_breed: data.breed,
+                pet_gender: data.gender,
+                pet_neutered: data.isNeutered,
+                pet_temperament: data.temperament,
+                service: data.service,
+                registration_date: new Date().toLocaleString('pt-BR'),
+                file_attachments: '<p>Documentos deverão ser enviados via WhatsApp</p>',
+                message: `Cadastro realizado com sucesso! ID: ${registrationId}. Aguardando documentos via WhatsApp.`,
+                reply_to: data.tutorEmail
+            })
+            .then(function(response) {
+                console.log(' Email enviado com sucesso!');
+                
+                // Mostrar mensagem de sucesso
+                alert(` CADASTRO REALIZADO COM SUCESSO!\n\nNome: ${data.tutorName}\nPet: ${data.petName}\nIdade: ${data.petAge}\nRaça: ${data.breed}\nSexo: ${data.gender}\nCastrado: ${data.isNeutered}\nTemperamento: ${data.temperament}\nCPF: ${data.tutorCpf}\n\n Email enviado para: aue.petcare@gmail.com\n ID do registro: ${registrationId}\n\n Agora envie os documentos via WhatsApp!`);
+                
+                // Reset form
+                document.getElementById('petRegistrationForm').reset();
+                document.getElementById('otherBreedContainer').style.display = 'none';
+                
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Mostrar modal do WhatsApp
+                showWhatsAppModal();
+            })
+            .catch(function(error) {
+                console.error(' Erro:', error);
+                alert(` Erro: ${error.text || error.message}`);
+                
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            });
+        }
+
+        // Modal WhatsApp
+        function showWhatsAppModal() {
+            const modal = document.createElement('div');
+            modal.id = 'whatsappModal';
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-8 max-w-md mx-4 transform transition-all">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-whatsapp text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">📸 Envie seus documentos!</h3>
+                        <p class="text-gray-600 mb-4">Para completar seu cadastro, envie os seguintes documentos via WhatsApp:</p>
+                        
+                        <div class="text-left bg-gray-50 rounded-lg p-4 mb-6">
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    Foto do pet
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    Comprovante de residência
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    Carteira de vacinação
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    Documento de identificação
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <a href="https://wa.me/5511922100458?text=Olá! Acabei de fazer o cadastro do meu pet e gostaria de enviar os documentos." 
+                               target="_blank" 
+                               class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                Enviar Documentos Agora
+                            </a>
+                            <button onclick="closeWhatsAppModal()" 
+                                    class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg hover:bg-gray-300 transition">
+                                Enviar Depois
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function closeWhatsAppModal() {
+            const modal = document.getElementById('whatsappModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach((slide, i) => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+                if (dots[i]) {
+                    dots[i].classList.remove('bg-white/80');
+                    dots[i].classList.add('bg-white/40');
+                }
+            });
+            
+            // Show current slide
+            if (slides[index]) {
+                slides[index].classList.remove('opacity-0');
+                slides[index].classList.add('opacity-100');
+            }
+            if (dots[index]) {
+                dots[index].classList.remove('bg-white/40');
+                dots[index].classList.add('bg-white/80');
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Initialize first slide
+        showSlide(0);
+
+        // Tour Carousel functionality - Código do Teste Funcionando
+        let currentTourSlide = 0;
+        const totalTourSlides = 6;
+        let tourCarouselInterval = null;
+
+        function initTourCarousel() {
+            console.log('=== INICIANDO CARROSSEL (CÓDIGO DO TESTE) ===');
+            
+            const slides = document.querySelectorAll('.carousel-tour-slide');
+            const dots = document.querySelectorAll('.carousel-tour-dot');
+            
+            console.log('Slides encontrados:', slides.length);
+            console.log('Dots encontrados:', dots.length);
+            
+            if (slides.length === 0) {
+                console.error('ERRO: Nenhum slide encontrado!');
+                return;
+            }
+            
+            // Inicia primeira slide
+            showTourSlide(0);
+            
+            // Inicia auto-play
+            startTourCarouselAutoPlay();
+            
+            console.log('Carrossel inicializado com sucesso!');
+        }
+
+        function showTourSlide(index) {
+            const slides = document.querySelectorAll('.carousel-tour-slide');
+            const dots = document.querySelectorAll('.carousel-tour-dot');
+            
+            if (slides.length === 0) return;
+            
+            console.log('Mostrando slide:', index + 1);
+            
+            // Esconde todas as imagens (display: none)
+            slides.forEach((slide, i) => {
+                slide.style.display = 'none';
+                if (dots[i]) {
+                    dots[i].classList.remove('bg-white/80');
+                    dots[i].classList.add('bg-white/40');
+                }
+            });
+            
+            // Mostra imagem atual (display: block)
+            if (slides[index]) {
+                slides[index].style.display = 'block';
+                console.log('Slide', index + 1, 'mostrada');
+            }
+            
+            // Atualiza dot
+            if (dots[index]) {
+                dots[index].classList.remove('bg-white/40');
+                dots[index].classList.add('bg-white/80');
+            }
+            
+            currentTourSlide = index;
+        }
+
+        function nextTourSlide() {
+            const slides = document.querySelectorAll('.carousel-tour-slide');
+            if (slides.length === 0) return;
+            
+            console.log('Próximo slide...');
+            currentTourSlide = (currentTourSlide + 1) % slides.length;
+            showTourSlide(currentTourSlide);
+        }
+
+        function prevTourSlide() {
+            const slides = document.querySelectorAll('.carousel-tour-slide');
+            if (slides.length === 0) return;
+            
+            console.log('Slide anterior...');
+            currentTourSlide = (currentTourSlide - 1 + slides.length) % slides.length;
+            showTourSlide(currentTourSlide);
+        }
+
+        function goToTourSlide(index) {
+            const slides = document.querySelectorAll('.carousel-tour-slide');
+            if (slides.length === 0) return;
+            
+            console.log('Indo para slide:', index + 1);
+            currentTourSlide = index;
+            showTourSlide(currentTourSlide);
+            
+            // Reinicia auto-play
+            stopTourCarouselAutoPlay();
+            startTourCarouselAutoPlay();
+        }
+
+        function startTourCarouselAutoPlay() {
+            stopTourCarouselAutoPlay();
+            tourCarouselInterval = setInterval(function() {
+                console.log('Auto-play avançando...');
+                nextTourSlide();
+            }, 3000); // 3 segundos como no teste
+            console.log('Auto-play iniciado (3 segundos)');
+        }
+
+        function stopTourCarouselAutoPlay() {
+            if (tourCarouselInterval) {
+                clearInterval(tourCarouselInterval);
+                tourCarouselInterval = null;
+                console.log('Auto-play parado');
+            }
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM carregado, iniciando sistema...');
+            
+            // Scroll suave para links de navegação
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        console.log('Rolando suavemente para:', targetId);
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Inicializar carrossel do tour
+            setTimeout(initTourCarousel, 100);
+        });
+
+        window.addEventListener('load', function() {
+            console.log('Window carregado, reiniciando...');
+            setTimeout(initTourCarousel, 200);
+        });
+
+        // Mobile menu toggle - with error checking
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                if (menu) {
+                    menu.classList.toggle('hidden');
+                }
+            });
+        }
+
+        // Handle "Outra" selection - with error checking
+        const breedInput = document.getElementById('breedInput');
+        if (breedInput) {
+            breedInput.addEventListener('change', function(e) {
+                const otherOption = document.getElementById('otherBreedContainer');
+                if (otherOption) {
+                    if (e.target.value === 'Outra') {
+                        otherOption.classList.remove('hidden');
+                    } else {
+                        otherOption.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Handle service radio buttons
+        document.querySelectorAll('input[name="service"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Remove all selected styles
+                document.querySelectorAll('label:has(input[name="service"])').forEach(label => {
+                    label.classList.remove('border-primary-color', 'bg-blue-50', 'shadow-lg');
+                    label.classList.add('border-gray-300');
+                });
+                
+                // Add selected style to checked radio's label
+                if (this.checked) {
+                    const label = this.closest('label');
+                    label.classList.remove('border-gray-300');
+                    label.classList.add('border-primary-color', 'bg-blue-50', 'shadow-lg');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

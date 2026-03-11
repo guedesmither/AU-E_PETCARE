@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>🐕 Novo Cadastro - AU-Ê Creche & Hotel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 3px solid #4A90A4; padding-bottom: 20px; margin-bottom: 30px; }
+        .logo { font-size: 32px; color: #4A90A4; margin-bottom: 10px; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 18px; font-weight: bold; color: #4A90A4; margin-bottom: 15px; border-left: 4px solid #4A90A4; padding-left: 10px; }
+        .info-item { margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 5px; }
+        .label { font-weight: bold; color: #333; }
+        .value { color: #666; }
+        .status { background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; text-align: center; margin-top: 20px; }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 12px; }
+        .whatsapp-section { background: #e8f5e8; border: 2px dashed #4CAF50; padding: 20px; margin-top: 30px; }
+        .whatsapp-title { color: #2E7D32; font-size: 18px; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #4CAF50; padding-left: 10px; }
+        .copy-text { background: white; padding: 15px; border-radius: 5px; border: 1px solid #ddd; position: relative; font-family: monospace; font-size: 12px; line-height: 1.4; word-wrap: break-word; }
+        .copy-instructions { text-align: center; margin-top: 10px; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🐾 AU-Ê Creche & Hotel</div>
+            <h2>🐕 Nova Ficha de Cadastro</h2>
+            <p>{{registration_date}}</p>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">👤 Informações do Tutor</div>
+            <div class="info-item">
+                <span class="label">Nome:</span> <span class="value">{{tutor_name}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Telefone:</span> <span class="value">{{tutor_phone}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Email:</span> <span class="value">{{tutor_email}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">CPF:</span> <span class="value">{{tutor_cpf}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🐕 Informações do Pet</div>
+            <div class="info-item">
+                <span class="label">Nome:</span> <span class="value">{{pet_name}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Idade:</span> <span class="value">{{pet_age}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Raça:</span> <span class="value">{{pet_breed}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Sexo:</span> <span class="value">{{pet_gender}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Castrado:</span> <span class="value">{{pet_neutered}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Temperamento:</span> <span class="value">{{pet_temperament}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🏥 Saúde e Bem-Estar</div>
+            <div class="info-item">
+                <span class="label">Doenças Pré-Existentes:</span> <span class="value">{{doencas}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Alergias:</span> <span class="value">{{alergias}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🍽️ Rotina de Alimentação</div>
+            <div class="info-item">
+                <span class="label">Vezes por dia:</span> <span class="value">{{vezes_alimentacao}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Gramas por refeição:</span> <span class="value">{{gramas_refeicao}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎮 Comportamento e Preferências</div>
+            <div class="info-item">
+                <span class="label">Brincadeiras Preferidas:</span> <span class="value">{{brincadeiras}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🛡️ Autorizações</div>
+            <div class="info-item">
+                <span class="label">Contato Veterinário:</span> <span class="value">{{contato_vet}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Brincadeiras na Piscina:</span> <span class="value">{{autoriza_piscina}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Fotos nas Redes Sociais:</span> <span class="value">{{autoriza_fotos}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎯 Serviço Solicitado</div>
+            <div class="info-item">
+                <span class="value">{{service}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📅 Frequência e Período</div>
+            <div class="info-item">
+                <span class="label">Dias da Semana:</span> <span class="value">{{dias_semana}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Check-in:</span> <span class="value">{{data_checkin}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Check-out:</span> <span class="value">{{data_checkout}}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Observações sobre o período:</span> <span class="value">{{observacoes_periodo}}</span>
+            </div>
+        </div>
+        
+        <div class="status">
+            <strong>✅ Cadastro recebido com sucesso!</strong><br>
+            Aguardando envio dos documentos via WhatsApp para conclusão.
+        </div>
+        
+        <!-- WhatsApp Copy Section - FORMATO EXCEL LIMPO -->
+        <div class="whatsapp-section">
+            <div class="whatsapp-title">
+                📱 Dados para Excel (Copie e Cole)
+            </div>
+            <div class="copy-text">
+                <div id="whatsappText">
+"{{tutor_name}}";"{{pet_name}}";"{{pet_age}}";"{{pet_breed}}";"{{pet_gender}}";"{{pet_neutered}}";"{{pet_temperament}}";"{{doencas}}";"{{alergias}}";"{{vezes_alimentacao}}";"{{gramas_refeicao}}";"{{brincadeiras}}";"{{contato_vet}}";"{{autoriza_piscina}}";"{{autoriza_fotos}}";"{{service}}";"{{dias_semana}}";"{{data_checkin}}";"{{data_checkout}}";"{{observacoes_periodo}}";"{{registration_date}}"
+                </div>
+            </div>
+            <div class="copy-instructions">
+                Copie a linha acima, cole no Excel e use a função "Texto para Colunas" para separar automaticamente!
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Este email foi gerado automaticamente pelo sistema de cadastro AU-Ê Creche & Hotel</p>
+            <p>📧 Para contato: aue.petcare@gmail.com | 📱 WhatsApp: (11) 92210-0458</p>
+        </div>
+    </div>
+</body>
+</html>
